@@ -6,6 +6,7 @@ import { useLoginMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { loginUser } from '../../redux/services/authSlice';
 import decodeToken from '../../utils/decodeToken';
+import logo from '../../assets/login.png';
 
 const LoginPage = () => {
   const [userLogin] = useLoginMutation();
@@ -17,8 +18,8 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'user@gmail.com',
-      password: 'pass123',
+      email: 'kirubarp.22it@kongu.edu',
+      password: 'Kiruba@2004',
     },
   });
 
@@ -29,20 +30,27 @@ const LoginPage = () => {
 
       if (res.statusCode === 200) {
         const user = decodeToken(res.data.token);
+        localStorage.setItem('access_token', res.data.token);
         dispatch(loginUser({ token: res.data.token, user }));
         navigate('/');
         toast.success('Successfully Login!', { id: toastId });
       }
     } catch (error: any) {
       toast.error(error.data.message, { id: toastId });
-      // toastMessage({ icon: 'error', text: error.data.message });
     }
   };
 
-  // if (isLoading) <Loader />;
-  // else
   return (
-    <Flex justify='center' align='center' style={{ height: '100vh' }}>
+    <Flex justify='center' align='center' style={{ height: '100vh', flexDirection: 'column' }}>
+      {/* Logo and Text Section */}
+      <Flex vertical align='center' style={{ marginBottom: '1rem' }}>
+        <img src={logo} alt='Company Logo' style={{ height: '80px', marginBottom: '0.5rem' }} />
+        <h2 style={{ margin: 0, fontSize: '20px', color: '#164863', textTransform: 'uppercase' }}>
+          Shree Madhura Foams
+        </h2>
+      </Flex>
+
+      {/* Login Container */}
       <Flex
         vertical
         style={{
@@ -59,7 +67,7 @@ const LoginPage = () => {
           <input
             type='text'
             {...register('email', { required: true })}
-            placeholder='Your Name*'
+            placeholder='Your Email*'
             className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
           />
           <input
@@ -79,7 +87,7 @@ const LoginPage = () => {
           </Flex>
         </form>
         <p style={{ marginTop: '1rem' }}>
-          Don't have any account? <Link to='/register'>Resister Here</Link>
+          Don't have any account? <Link to='/register'>Register Here</Link>
         </p>
       </Flex>
     </Flex>

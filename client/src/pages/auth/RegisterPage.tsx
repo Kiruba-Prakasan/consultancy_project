@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import { loginUser } from '../../redux/services/authSlice';
 import decodeToken from '../../utils/decodeToken';
 import { toast } from 'sonner';
+import registerImage from '../../assets/login.png'; // Image import
 
 const RegisterPage = () => {
   const dispatch = useAppDispatch();
@@ -54,6 +55,16 @@ const RegisterPage = () => {
           borderRadius: '.6rem',
         }}
       >
+        <img
+          src={registerImage}
+          alt="Register"
+          style={{
+            width: '100px',
+            height: '100px',
+            objectFit: 'contain',
+            margin: '0 auto 1rem',
+          }}
+        />
         <h1 style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
           Register
         </h1>

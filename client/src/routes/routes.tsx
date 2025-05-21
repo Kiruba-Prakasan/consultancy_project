@@ -14,6 +14,7 @@ import SaleManagementPage from '../pages/managements/SaleManagementPage';
 import SellerManagementPage from '../pages/managements/SellerManagementPage';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import EditProfilePage from '../pages/EditProfilePage';
+import StockQ from '../pages/StockQ';
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,7 @@ export const router = createBrowserRouter([
     ],
   },
   { path: '/login', element: <LoginPage /> },
+  { path: '/stockq', element: <StockQ /> },
   { path: '/register', element: <RegisterPage /> },
   { path: '*', element: <NotFound /> },
 ]);

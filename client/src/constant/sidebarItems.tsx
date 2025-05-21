@@ -6,6 +6,7 @@ import {
   MoneyCollectFilled,
   ProfileFilled,
   UserOutlined,
+  StockOutlined,
 } from '@ant-design/icons';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -50,5 +51,10 @@ export const sidebarItems = [
     key: 'Profile',
     label: <NavLink to='/profile'>PROFILE</NavLink>,
     icon: React.createElement(UserOutlined),
+  },
+  {
+    key: 'stockq',
+    label: <NavLink to='/stockq'>STOCK QUANTITY</NavLink>,
+    icon: React.createElement(StockOutlined),
   },
 ];
